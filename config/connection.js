@@ -14,7 +14,7 @@ if (process.env.JAWSDB_URL) {
   sequilize = new Sequilize(
     process.env.DB_NAME,
     process.env.DB_USER,
-    process.env.DB_PW,
+    process.env.DB_PASSWORD,
     {
       host: "localhost",
       dialect: "mysql",
@@ -22,3 +22,5 @@ if (process.env.JAWSDB_URL) {
     }
   );
 }
+
+module.exports = sequilize;
