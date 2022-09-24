@@ -1,17 +1,17 @@
 // Import Sequilize
 
-const Sequilize = require("sequilize");
+const Sequelize = require("sequelize");
 
 require("dotenv").config();
 
 // create our connection to the database in mysql
 
-let sequilize;
+let sequelize;
 
 if (process.env.JAWSDB_URL) {
-  sequilize = new Sequilize(process.env.JAWSDB_URL);
+  sequelize = new Sequelize(process.env.JAWSDB_URL);
 } else {
-  sequilize = new Sequilize(
+  sequelize = new Sequelize(
     process.env.DB_NAME,
     process.env.DB_USER,
     process.env.DB_PASSWORD,
@@ -23,4 +23,4 @@ if (process.env.JAWSDB_URL) {
   );
 }
 
-module.exports = sequilize;
+module.exports = sequelize;
