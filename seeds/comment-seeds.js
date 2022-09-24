@@ -1,3 +1,4 @@
+// requiring the Comment model and adding to it.
 const { Comment } = require("../models");
 
 const commentData = [
