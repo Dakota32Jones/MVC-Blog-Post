@@ -1,9 +1,9 @@
 // require correct npm packages/dependencies
+require("dotenv").config();
 const express = require("express");
 const routes = require("./controllers");
 const sequelize = require("./config/connection");
 const path = require("path");
-require("dotenv").config();
 
 const helpers = require("./utils/helpers");
 
@@ -11,6 +11,8 @@ const exphbs = require("express-handlebars");
 const hbs = exphbs.create({ helpers });
 
 const session = require("express-session");
+
+const IS_PROD = process.env.NODE_ENV === "prod";
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -46,6 +48,6 @@ app.use(routes);
 
 // get database connection and server
 
-sequelize.sync({ force: false }).then(() => {
+sequelize.sync({ force: !IS_PROD }).then(() => {
   app.listen(PORT, () => console.log(`Now listening on` + { PORT }));
 });
