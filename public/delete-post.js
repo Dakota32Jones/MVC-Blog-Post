@@ -1,3 +1,4 @@
+// adding event handler
 async function deleteFormHandler(event) {
   event.preventDefault();
 

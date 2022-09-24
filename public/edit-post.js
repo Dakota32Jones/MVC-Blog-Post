@@ -1,3 +1,4 @@
+// adding event handler and grabbing correct inputs
 async function editFormHandler(event) {
   event.preventDefault();
 

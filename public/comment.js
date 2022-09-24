@@ -1,4 +1,4 @@
-const { Json } = require("sequelize/types/utils");
+// adding event handler and grabbing correct inputs
 
 async function commentFormHandler(event) {
   event.preventDefault();
