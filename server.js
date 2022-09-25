@@ -12,8 +12,6 @@ const hbs = exphbs.create({ helpers });
 
 const session = require("express-session");
 
-const IS_PROD = process.env.NODE_ENV === "prod";
-
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -21,13 +19,9 @@ const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 const sess = {
   secret: process.env.SESSION_SECRET,
-  cookie: {
-    maxAge: 300000,
-    httpOnly: true,
-    secure: false,
-    sameSite: "strict",
-  },
-  resave: false,
+  cookie: {},
+  resave: true,
+  rolling: true,
   saveUninitialized: true,
   store: new SequelizeStore({
     db: sequelize,
@@ -48,6 +42,6 @@ app.use(routes);
 
 // get database connection and server
 
-sequelize.sync({ force: !IS_PROD }).then(() => {
-  app.listen(PORT, () => console.log(`Now listening on` + { PORT }));
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log(`Now listening on  ${PORT}`));
 });
