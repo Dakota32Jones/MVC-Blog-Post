@@ -1,6 +1,6 @@
 // requiring the correct files and syncing databases.
 
-const seedPosts = require("./post-seeds");
+const seedPosts = require("./post-seed");
 const seedUsers = require("./user-seeds");
 const seedComments = require("./comment-seeds");
 
